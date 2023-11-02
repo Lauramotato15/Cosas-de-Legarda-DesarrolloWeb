@@ -1,0 +1,23 @@
+.conte1{
+    
+    background-image: url("https://www.xtrafondos.com/wallpapers/resoluciones/19/atardecer-rosa-en-la-playa_2560x1440_3341.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 1000px;
+
+}
+
+h1{
+    padding-top: 50px;
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.uno{
+    font-size: 80px;
+    color: white;
+    background-color:  rgb(218, 62, 243);
+    border: solid 2px rgb(207, 102, 255);
+    border-radius: 50px;
+}
+

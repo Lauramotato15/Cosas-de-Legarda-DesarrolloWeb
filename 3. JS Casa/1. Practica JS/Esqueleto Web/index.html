@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <script src="js/bootstrap.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <button class="btn btn-primary" onclick="seleccionarProducto('Pasta')" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Pasta</button>
+    <button class="btn btn-primary" onclick="seleccionarProducto('Ceviche')" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Ceviche</button>
+    <button class="btn btn-primary" onclick="seleccionarProducto('Pulpo')" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Pulpo</button>
+    <button class="btn btn-primary" onclick="seleccionarProducto('Lumpias de Caro y su mamá')" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Lumpias de Caro y su mamá</button>
+
+
+    <table class="table table-bordered">
+        <thead>
+            <th>Nombre: </th>
+            <th>Cantidad: </th>
+            <th>Precio</th>
+            <th>Total:</th>
+            <th>Opciones: </th>
+        </thead>
+        <tbody id="platos">
+        </tbody>
+        <tfoot>
+            <th colspan="3">Total: </th>
+            <th id="total"></th>
+        </tfoot>
+    </table>
+
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="text" placeholder="Cantidad" id="cantidad" min="1">
+                    <input type="text" placeholder="Precio" id="precio" min="1">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="guardar()" id="guardar">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+
+        let productoTemporal;
+        const pedidos = [];
+
+        // Guardado de producto
+        function seleccionarProducto(producto){
+            productoTemporal = producto;
+        }
+
+        function guardar(){
+            const cantidad = parseFloat(document.getElementById("cantidad").value);
+            const precio = parseFloat(document.getElementById("precio").value);
+            const total = cantidad * precio;
+
+            const formato = [ productoTemporal, cantidad, precio, total ];
+            pedidos.push(formato);
+            document.getElementById("cantidad").value = "";
+            document.getElementById("precio").value = "";
+
+            recorrerPedidos();
+        }
+
+        // Renderizado (Imprimir)
+        function recorrerPedidos(){
+            let total = 0;
+            document.getElementById("platos").innerHTML = "";
+            for(let i=0; i < pedidos.length ; i++){
+                const nodoNombre = document.createTextNode( pedidos[i][0] );
+
+                const tdNombre = document.createElement("td");
+                tdNombre.appendChild(nodoNombre);
+
+                const nodoCantidad = document.createTextNode(pedidos[i][1]);
+
+                const tdCantidad = document.createElement("td");
+                tdCantidad.appendChild(nodoCantidad);
+
+                const nodoPrecio = document.createTextNode(pedidos[i][2]);
+
+                const tdPrecio = document.createElement("td");
+                tdPrecio.appendChild(nodoPrecio);
+
+                const nodoTotal = document.createTextNode(pedidos[i][3]);
+
+                const tdTotal = document.createElement("td");
+                tdTotal.appendChild(nodoTotal);
+
+                const nodoBorrar = document.createTextNode("-");
+
+                const btnElement = document.createElement("button");
+                btnElement.appendChild(nodoBorrar);
+                btnElement.setAttribute("onclick", "disminuir("+ i +")");
+
+                const nodoIncrementar = document.createTextNode("+");
+                const btnElementIncrementar = document.createElement("button");
+                btnElementIncrementar.appendChild(nodoIncrementar);
+                btnElementIncrementar.setAttribute("onclick", "aumentar("+ i +")");
+
+                const tdBorrar = document.createElement("td");
+                tdBorrar.appendChild(btnElement);
+                tdBorrar.appendChild(btnElementIncrementar);
+
+                const tr = document.createElement("tr");
+                tr.appendChild(tdNombre );
+                tr.appendChild(tdCantidad);
+                tr.appendChild(tdPrecio);
+                tr.appendChild(tdTotal);
+                tr.appendChild(tdBorrar);
+
+                document.getElementById("platos").appendChild(tr);
+
+                total += parseInt(pedidos[i][3]);
+            }
+            document.getElementById("total").innerHTML = total;
+        }
+
+        function disminuir(indice){
+            if(pedidos[indice][1] > 0){
+                pedidos[indice][1] = pedidos[indice][1] - 1;
+                pedidos[indice][3] = pedidos[indice][1] * pedidos[indice][2];
+                recorrerPedidos();
+            }
+        }
+
+        function aumentar(indice){
+            if(pedidos[indice][1] > 0){
+                pedidos[indice][1] = pedidos[indice][1] + 1;
+                pedidos[indice][3] = pedidos[indice][1] * pedidos[indice][2];
+                recorrerPedidos();
+            }
+        }
+    </script>
+</body>
+
+</html>

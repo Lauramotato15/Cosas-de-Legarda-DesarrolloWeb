@@ -1,0 +1,19 @@
+.Cabezero{
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    justify-content: center;
+    border: solid 3px blue;
+}
+
+.conta2{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    background-color: rgb(207, 207, 255);
+}
+
+img{
+    margin-left: 50px;
+}

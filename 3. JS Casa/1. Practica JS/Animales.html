@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/Estlos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+
+
+   <div class="container">
+    <div class="row text-center">
+        <div class="col-6">
+            <button class="btn btn-primary mt-3 mb-3 type="button"  data-bs-toggle="modal" data-bs-target="#Registro">Registrar mascota</button>
+        </div>
+    </div>
+   </div>
+    
+    <div class="Cabezero">
+        <h1 class="mt-5">Registro de animales</h1>
+        <img src="img/logo.jpeg" alt="Ejemplo" width="100px">
+    </div>
+
+
+    <div class="conta2 pt-5 pb-5">
+        <h2>Sitio web, ideal para ti :), para los amantes de los animales</h2>
+        <img src="img/animal3.jpeg" alt="ejemplo" width="400px">
+    </div>
+
+
+    <div class="container">
+        <table class="table table-hover">
+
+            <thead>
+                <tr>
+                    <th>Nombre animal</th>
+                    <th>Especie</th>
+                    <th>Edad</th>
+                </tr>
+            </thead>
+    
+            <tbody id="datos">
+    
+            </tbody>
+    
+        </table>
+    </div>
+
+    
+
+
+  
+
+  <!-- Modal 1 -->
+  <div class="modal fade" id="Registro" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">Formulario de registro</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="inputAnimal">Nombre Animal</label>
+                    <input type="text" class="form-control" id="inputAnimal">
+                </div>
+
+                <div class="col-md-6">
+                    <label for="inputEspecie">Especie</label>
+                    <input type="text" class="form-control" id="inputEspecie">
+                </div>
+
+                <div class="col-md-6">
+                    <label for="inputEdad">Edad</label>
+                    <input type="text" class="form-control" id="inputEdad">
+                </div>
+
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="agregarMascota()">Registrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <script src="js/Animales.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</body>
+</html>

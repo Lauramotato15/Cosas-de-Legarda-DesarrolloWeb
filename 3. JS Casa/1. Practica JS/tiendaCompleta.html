@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Tienda de mascotas</title>
+        <link rel="icon" href="img/iconoPerro.ico">
+        <link rel="stylesheet" href="css/tiendaCompleta.css">
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+            crossorigin="anonymous">
+    </head>
+    <body>
+
+        <header>
+            <h1 id="uno">Tienda de mascotas</h1>
+        </header>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 mt-5 col-sm-12 col-md-6">
+                    <div class="card  border-warning">
+                        <img src="img/perro.jpg.crdownload"
+                            class="card-img-top" alt="ejemplo">
+                        <div class="card-body">
+                            <h5 class="card-title">Perro</h5>
+                            <p>$100.000</p>
+                            <p class="card-text">Tierno y curioso, con ojos
+                                brillantes llenos de asombro y patitas torpes
+                                que exploran el mundo con alegría</p>
+                            <button class="btn btn-warning" type="button" class="btn btn-primary" data-bs-toggle="modal"data-bs-target="#Modal1" onclick="guardarDatos('perro',100000)">Agregar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 mt-5 col-sm-12 col-md-6">
+                    <div class="card  border-warning">
+                        <img src="img/gato.jpg.crdownload" class="card-img-top"
+                            alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Gato</h5>
+                            <p>$50.000</p>
+                            <p class="card-text">Mirada curiosa y enigmática,
+                                con pelaje suave y esponjoso que invita a
+                                acariciarlo. Sus movimientos ágiles</p>
+                            <button class="btn btn-warning" type="button" class="btn btn-primary" data-bs-toggle="modal"data-bs-target="#Modal1"  onclick="guardarDatos('gato',50000)">Agregar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 mt-5 col-sm-12 col-md-6">
+                    <div class="card  border-warning">
+                        <img src="img/pato.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Pato</h5>
+                            <p>$20.000</p>
+                            <p class="card-text">Un patito bebé, con suavidad y
+                                ternura en cada plumón que cubre su cuerpo. Su
+                                andar torpe y su curiosa </p>
+                            <button class="btn btn-warning" type="button" class="btn btn-primary" data-bs-toggle="modal"data-bs-target="#Modal1"  onclick="guardarDatos('pato',20000)">Agregar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 mt-5 col-sm-12 col-md-6">
+                    <div class="card  border-warning">
+                        <img src="img/zorro.jpg.crdownload" class="card-img-top"
+                            alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Zorrito</h5>
+                            <p>$300.000</p>
+                            <p class="card-text">Ojos avispados llenos de
+                                curiosidad y un pelaje suave y peludo que lo
+                                hace irresistible al tacto.</p>
+                            <button class="btn btn-warning"type="button" class="btn btn-primary" data-bs-toggle="modal"data-bs-target="#Modal1"  onclick="guardarDatos('zorro',300000)">Agregar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-3 mt-5 col-sm-12 col-md-6 mb-4">
+                    <div class="card  border-warning">
+                        <img src="img/loro.jpg" class="card-img-top"
+                            alt="ejemplo">
+                        <div class="card-body">
+                            <h5 class="card-title">Loro</h5>
+                            <p>$250.000</p>
+                            <p class="card-text">Con colores vibrantes y plumas
+                                suaves que lo adornan como un arcoíris en
+                                miniatura</p>
+                            <button class="btn btn-warning" type="button" class="btn btn-primary" data-bs-toggle="modal"data-bs-target="#Modal1" onclick="guardarDatos('loro',250000)">Agregar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 mt-5 col-sm-12 col-md-6 mb-4">
+                    <div class="card  border-warning">
+                        <img src="img/pingui.jpg" class="card-img-top"
+                            alt="ejemplo">
+                        <div class="card-body">
+                            <h5 class="card-title">Pinguino</h5>
+                            <p>$30.000</p>
+                            <p class="card-text">Pelaje suave que lo protege del
+                                frío polar. Pequeña estatura lo hacen aún más
+                                adorable. </p>
+                            <button class="btn btn-warning" type="button" class="btn btn-primary" data-bs-toggle="modal"data-bs-target="#Modal1" onclick="guardarDatos('pinguino',30000)">Agregar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 mt-5 col-sm-12 col-md-6  mb-4">
+                    <div class="card  border-warning">
+                        <img src="img/loro.jpg" class="card-img-top"
+                            alt="ejemplo">
+                        <div class="card-body">
+                            <h5 class="card-title">Lorito</h5>
+                            <p>$150.000</p>
+                            <p class="card-text">Un lorito azul bebé, con
+                                plumaje suave y brillante que refleja los tonos
+                                del cielo y el mar. </p>
+                            <button class="btn btn-warning" type="button" class="btn btn-primary" data-bs-toggle="modal"data-bs-target="#Modal1" onclick="guardarDatos('lorito',150000)">Agregar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 mt-5 col-sm-12 col-md-6  mb-4">
+                    <div class="card  border-warning">
+                        <img src="img/pingui.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Pinguinito</h5>
+                            <p>$15.000</p>
+                            <p class="card-text">Su figura diminuta y su andar
+                                torpe sobre el hielo lo hacen parecer aún más
+                                tierno. </p>
+                            <button class="btn btn-warning" type="button" class="btn btn-primary" data-bs-toggle="modal"data-bs-target="#Modal1" onclick="guardarDatos('pinguinito',15000)">Agregar</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <table id="tabla" class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Nombre comprador</th>
+                        <th>Cedulá</th>
+                        <th>Mascota</th>
+                        <th>Valor unidad</th>
+                        <th>Cantidad</th>
+                        <th>Precio total</th>
+                    </tr>
+                </thead>
+                <tbody id="datos">
+
+                </tbody>
+
+                <tfoot>
+                    <tr>
+                        <td>Total pagar: </td>
+                    </tr>
+                </tfoot>
+            </table>
+
+        </div>
+
+
+
+
+
+
+
+        <!-- Modal -->
+        <div class="modal fade" id="Modal1" tabindex="-1"
+            aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false" >
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Carrito de compra</h1>
+                        <button type="button" class="btn-close"
+                            data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                    
+                            <div class="col-md-12">
+                                <label for="inputComprador">Nombre comprador</label>
+                                <input type="text" class="form-control" id="inputComprador">
+                            </div>
+
+                            <div class="col-md-12">
+                                <label for="inputCedula">Cedúla</label>
+                                <input type="number" class="form-control" id="inputCedula">
+                            </div>
+
+                            <div class="col-md-12">
+                              <label for="inputCantidad">Cantidad</label>
+                              <input type="number" class="form-control" id="inputCantidad">
+                            </div>
+              
+                          </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary"
+                            data-bs-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-primary"  data-bs-dismiss="modal" onclick="agregarCompra()">Guardar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="js/tiendaCompleta.js"></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+            crossorigin="anonymous"></script>
+    </body>
+</html>
