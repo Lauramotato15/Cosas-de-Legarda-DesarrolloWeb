@@ -1,6 +1,6 @@
 let carrito = [
 
-]
+];
 
 let total = 0;
 

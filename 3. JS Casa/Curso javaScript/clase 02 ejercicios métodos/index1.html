@@ -1,0 +1,59 @@
+<script> 
+    //Leer usuarios hasta que el usuario ingrese un documento en 0
+    //datos a pedir documento, nombre, apellido, edad 
+    //generar un nuevo arreglo que tengan el mismo objeto pero agregando en cada uno de los objetos 
+    //el atributo que nos dice si es mayor de edad 
+    //deseamos generar 2 arreglos mas, 1 que nos dira los usuarios mayores de edad y 2 nos dira 
+    //las personas que tengan menos de 21 años
+    //queremos crear un nuevo arreglo que solo contenga el nombre de todos los usuarios
+    //queremos generar un nuevo arreglo en el cual los nombres de los usuarios salen redeados de etiquetas p
+    //queremos generar un String de todas las etiquetas p que generamos anteriormente e imprimirlas en el documento  
+    //queremos buscar el primer elemento que la primera letra del nombre sea e y tenga 3 letra 
+    //queremos que saque todos los usuarios que tengan una edad par y me digas si todos son mayores de edad. 
+    
+    
+    let documento,nombre,apellido,edad;
+    let personas=[];
+    do{
+
+        documento = prompt("Ingrese documento");
+        
+        if(documento!="0"){
+            nombre = prompt("Ingrese nombre");
+            apellido = prompt("Ingrese apellido");
+            edad = parseInt(prompt("Ingrese edad"));
+            let persona ={
+                documento,
+                nombre,
+                apellido,
+                edad 
+            };
+            personas.push(persona);
+        }
+    }while(documento!="0");
+
+    let nuevoPersonas = personas.map(esMayorEdad);
+
+    function esMayorEdad(valor){
+        if(valor.edad > 18){
+            valor.mayorEdad = true;
+        }else{
+            valor.mayorEdad = false;
+        }
+        return valor;
+    }
+
+    let nuevoMayoresEdad = nuevoPersonas.filter(valor => valor.mayorEdad);
+    let menores21 = nuevoPersonas.filter(valor => valor.edad < 21);
+    let nombresPersonas = nuevoPersonas.map(valor=>valor.nombre);
+    let nombreConEtiqueta = nombresPersonas.map(valor=>`<span>${valor}</span>`);
+    let strinNuevo = nombreConEtiqueta.join("-");
+
+    document.write(strinNuevo);
+    console.log(nuevoPersonas.every(valor=> valor.edad > 18));
+    console.log(nuevoPersonas.some(valor=> valor.nombre=="luis" || valor.nombre=="Luis"));
+    console.log(nuevoPersonas.find(valor => valor.nombre[0]=="e"));
+    let edadPar= nuevoPersonas.filter(valor=>valor.edad % 2 == 0);
+    console.log(edadPar.every(valor => valor > 18));
+
+</script>
