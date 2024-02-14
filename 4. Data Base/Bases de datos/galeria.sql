@@ -80,7 +80,7 @@ CREATE TABLE factura (
     hora TIME, 
     descripcion TEXT,
     id_usuario INT, 
-    total_final FLOAT(6,4),
+    total_final FLOAT,
     FOREIGN KEY (id_usuario) REFERENCES usuario(id)
 );
 
@@ -101,6 +101,11 @@ INSERT INTO autor (nombre, apellido, nacionalidad, estilo, fecha_muerte) VALUES 
 INSERT INTO obra (id_autor, titulo, fecha_creacion, estilo) VALUES (1,'Poetico', '1960-05-12', 'Poesia');
 INSERT INTO obra (id_autor, titulo, fecha_creacion, estilo) VALUES (1, 'Realista', '1670-08-20', 'Realismo');
 INSERT INTO obra (id_autor, titulo, fecha_creacion, estilo) VALUES (2, 'Comedia', '1945-04-14', 'Comedia_accion');
+
+INSERT INTO obra_exposicion(id_exposicion, id_obra) VALUES (1, 2);
+INSERT INTO obra_exposicion(id_exposicion, id_obra) VALUES (2, 1);
+INSERT INTO obra_exposicion(id_exposicion, id_obra) VALUES (3, 2);
+
 
 INSERT INTO categoria (nombre) VALUES ('Literatura');
 INSERT INTO categoria (nombre) VALUES ('Ficcion');
@@ -152,35 +157,22 @@ UPDATE permiso SET insertar=true, actualizar=true, eliminar=true WHERE id_modulo
 
 UPDATE autor SET fecha_muerte='1988-03-01' WHERE nombre='Julian';
 
-INSERT INTO factura (fecha,hora,descripcion,id_usuario, total_final) VALUES
-('2010','12:32','Compra 2 boletas',1, 190000 );
+INSERT INTO factura (id, fecha,hora,descripcion,id_usuario, total_final) VALUES
+(1, '2010-02-12', '8:00', 'mucho',1, 1000);
 
-INSERT INTO factura (fecha,hora,descripcion,id_usuario, total_final) VALUES
-('2015','7:32','Compra 4 boletas',1, 120000 );
+INSERT INTO factura (id, fecha,hora,descripcion,id_usuario, total_final) VALUES
+(2, '2015-05-06', '7:32','Compra 4 boletas',3, 120000);
 
-INSERT INTO factura (fecha,hora,descripcion,id_usuario, total_final) VALUES
-('2020','9:00','Compra 1 boletas',1, 25000);
+INSERT INTO factura (id, fecha,hora,descripcion,id_usuario, total_final) VALUES
+(3,'2020-03-14','9:00','Compra 1 boletas',1, 25000);
 
-INSERT INTO entrada_comprada (id_factura, id_exposicion, cantidad, precio, total) VALUES 
-(1, 1, 2, 20000, 40000);
+INSERT INTO entrada_comprada (id_factura, id_exposicion) VALUES 
+(1, 3);
 
-INSERT INTO entrada_comprada (id_factura, id_exposicion, cantidad, precio, total) VALUES 
-(2, 3, 3, 30000, 12.0000);
+INSERT INTO entrada_comprada (id_factura, id_exposicion) VALUES 
+(2, 3);
 
-INSERT INTO entrada_comprada (id_factura, id_exposicion, cantidad, precio, total) VALUES 
-(3, 2, 1, 25000, 25.000);
+INSERT INTO entrada_comprada (id_factura, id_exposicion) VALUES 
+(3, 2);
 
-INSERT INTO entrada_comprada (id_factura, id_exposicion, cantidad, precio, total) VALUES 
-(1, 3, 5, 30000, 150.000);
-
-UPDATE entrada_comprada SET total=90.000 WHERE cantidad=3;
-
-ALTER TABLE entrada_comprada 
-ADD cantidad INT;
-
-ALTER TABLE entrada_comprada
-ADD precio INT(100);
-
-ALTER TABLE entrada_comprada
-MODIFY total FLOAT(10,3); 
 

@@ -132,7 +132,8 @@ SELECT articulo, WEEKOFYEAR(fecha) `Semana`, YEAR(fecha) `Year` FROM pedido
 INNER JOIN linped ON pedido.numPedido = linped.numPedido WHERE YEAR(fecha) = 2010 AND MONTH(fecha) = 09 ORDER BY WEEKOFYEAR(fecha);
 
 --T04.015- Nombre, apellidos y edad (aproximada) de los usuarios del dominio "dlsi.ua.es", ordenado descendentemente por edad.
-SELECT nombre, apellidos, YEAR(NOW()) - YEAR(nacido) edad FROM usuario WHERE email LIKE '%dlsi.ua.es%' ORDER BY YEAR(NOW()) - YEAR(nacido) DESC;
+SELECT nombre, apellidos, YEAR(NOW()) - YEAR(nacido) edad FROM usuario 
+WHERE email LIKE '%dlsi.ua.es%' ORDER BY YEAR(NOW()) - YEAR(nacido) DESC;
 
 --T04.016- Email y cantidad de dias que han pasado desde los pedidos realizados por cada usuario hasta la fecha de cada cesta que tambien sea suya. Eliminad duplicados.
 SELECT DISTINCT pedido.usuario, DATEDIFF(cesta.fecha, pedido.fecha) cantidad_dias FROM  cesta
@@ -147,9 +148,10 @@ SELECT numPedido, usuario, DATE_FORMAT(fecha, '%d/%m/%Y') Fecha FROM pedido WHER
 -- T04.019- Codigo, nombre, panel y pantalla de los televisores que no se hayan solicitado ni en lo que va de ano, ni en los ultimos seis meses del ano pasado.
 SELECT tv.cod, nombre, panel, pantalla, cesta.fecha FROM tv 
 INNER JOIN articulo ON tv.cod = articulo.cod 
-INNER JOIN cesta ON cesta.articulo = tv.cod WHERE YEAR(cesta.fecha) < YEAR(NOW())-1 OR ( YEAR(cesta.fecha) = YEAR(NOW())-1 AND MONTH(cesta.fecha) NOT BETWEEN 7 AND 12); 
+INNER JOIN cesta ON cesta.articulo = tv.cod WHERE YEAR(cesta.fecha) < YEAR(NOW())-1 OR ( YEAR(cesta.fecha) = YEAR(NOW())-1 AND MONTH(cesta.fecha) < 7); 
+
+SELECT tv.cod, nombre, panel, pantalla FROM articulo JOIN tv ON articulo.cod = tv.cod JOIN linped ON tv.cod = linped.articulo JOIN pedido ON linped.numPedido = pedido.numPedido WHERE YEAR(pedido.fecha) < YEAR(NOW()) - 1 OR (YEAR(pedido.fecha) < YEAR(NOW()) AND MONTH(pedido.fecha) < 7);
 
 -- - Email y cantidad de dias que han pasado desde los pedidos realizados por cada usuario hasta la fecha de cada articulo que ahora mismo hay en su cesta. Eliminad duplicados.
 SELECT DISTINCT pedido.usuario, DATEDIFF(cesta.fecha, pedido.fecha) cantidad FROM pedido 
-INNER JOIN cesta ON cesta.usuario = pedido.usuario
-INNER JOIN linped ON cesta.articulo = linped.articulo;
+INNER JOIN cesta ON cesta.usuario = pedido.usuario; 
