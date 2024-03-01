@@ -155,3 +155,5 @@ SELECT tv.cod, nombre, panel, pantalla FROM articulo JOIN tv ON articulo.cod = t
 -- - Email y cantidad de dias que han pasado desde los pedidos realizados por cada usuario hasta la fecha de cada articulo que ahora mismo hay en su cesta. Eliminad duplicados.
 SELECT DISTINCT pedido.usuario, DATEDIFF(cesta.fecha, pedido.fecha) cantidad FROM pedido 
 INNER JOIN cesta ON cesta.usuario = pedido.usuario; 
+
+INSERT INTO cliente()
