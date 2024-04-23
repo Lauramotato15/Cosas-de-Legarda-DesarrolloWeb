@@ -107,3 +107,27 @@ INNER JOIN imparte ON imparte.dni = profesores.dni;
 SELECT * FROM profesores 
 LEFT JOIN imparte ON profesores.dni = imparte.dni
 WHERE imparte.asignatura is NULL; 
+
+
+
+CREATE TRIGGER  producto_AI
+AFTER INSERT ON producto
+FOR EACH ROW INSERT INTO reg_productos(codArticulo, nomArticulo, precio, insertado)
+VALUES(NEW.serial, NEW.nombre, NEW.precio, NOW());
+
+INSERT INTO producto(serial,nombre,precio,fecha)
+VALUES ("MZ2", "manzana", 1000, NOW());
+
+
+CREATE TRIGGER cliente_B_I 
+BEFORE INSERT ON cliente
+FOR EACH ROW 
+BEGIN 
+IF (NEW.edad FROM cliente) > 18 THEN 
+INSERT INTO (id,nombre,edad,direccion) 
+VALUES(1, "Luis", 26, "CALLE 30");
+
+END IF; 
+END;
+
+DELIMITER ;
