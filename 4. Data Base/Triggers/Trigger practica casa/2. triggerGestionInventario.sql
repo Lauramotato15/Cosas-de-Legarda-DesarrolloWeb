@@ -29,6 +29,7 @@ DELIMITER ;
 --Trigger para actualizar el total de una venta al modificar la cantidad de un producto:
 --Este trigger recalcula el total de la venta cuando se modifica la cantidad de un producto en la tabla de detalles de venta.
 --Se asegura de que el total refleje correctamente el precio unitario y la cantidad vendida.
+
 DELIMITER //
 CREATE TRIGGER detalles_ventaAU AFTER UPDATE ON detalles_venta
 FOR EACH ROW 
@@ -54,6 +55,7 @@ DELIMITER ;
 --Trigger para actualizar el stock al eliminar una venta:
 --Este trigger incrementa el stock de los productos involucrados en una venta eliminada.
 --Se asegura de que el stock se ajuste correctamente después de eliminar una venta.
+
 DELIMITER //
 CREATE TRIGGER ventasBD BEFORE DELETE ON ventas
 FOR EACH ROW 
@@ -66,14 +68,6 @@ END;
 //
 DELIMITER ;
 
---Insertar un cliente el campo rango quede con el valor vacio 
-
-DELIMITER //
-CREATE TRIGGER clientesBI BEFORE INSERT ON clientes 
-FOR EACH ROW 
-SET NEW.rango = NULL;
-//
-DELIMITER ; 
 
 --Este trigger calcula el total de ventas de un cliente en un período de tiempo determinado.
 --Basándose en el total de ventas, asigna al cliente un rango de descuento (por ejemplo, "Platino", "Oro", "Plata", etc.).
