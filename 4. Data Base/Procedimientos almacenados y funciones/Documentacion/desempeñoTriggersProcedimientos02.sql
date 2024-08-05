@@ -5,7 +5,7 @@ USE personal_finances;
 CREATE TABLE users (
     user_id CHAR(30) PRIMARY KEY,
     full_name VARCHAR(80),
-    mail VARCHAR(100) UNIQUE, -- user_name
+    mail VARCHAR(100) UNIQUE, 
     passhash VARCHAR(140),
     user_role ENUM('admin','user'),
     balance FLOAT(10,2),
@@ -48,9 +48,21 @@ CREATE TABLE history_transactions (
 
 -- DISPARADORES:
 
--- Cuando se inserta un nuevo registro en transactions, verificar primero si es un gasto o un ingreso, Si ingresa incrementar la el saldo en la tabla usuarios Si sale disminuir el saldo.
+-- Cuando se inserta un nuevo registro en transactions, verificar primero si es un gasto o un ingreso,
+--Si ingresa incrementar la el saldo en la tabla usuarios Si sale disminuir el saldo.
+DELIMITER //
+CREATE TRIGGER ActualizarSaldo AFTER INSERT ON  transactions
+FOR EACH ROW
+BEGIN
+    IF(NEW.t_type = 'revenue')THEN
+        UPDATE users SET balance = balance + NEW.amount WHERE  user_id = NEW. user_id; 
+    ELSE
+        UPDATE users SET balance = balance - NEW.amount WHERE  user_id = NEW. user_id;     
+    END IF; 
+END; 
+DELIMITER ; 
 
--- Cuando se borra un registro en la tabla movimientos verificar si el registro borrado tenia ingresa o sale y deacuerdo a eso incrementar o disminuir el saldo.
+-- Cuando se borra un registro en la tabla movimientos verificar si el registro borrado tenia ingresa o sale y de acuerdo a eso incrementar o disminuir el saldo.
 
 -- Crear una función que reciba el una fecha y retorne el total de gastos en esa fecha,
 
