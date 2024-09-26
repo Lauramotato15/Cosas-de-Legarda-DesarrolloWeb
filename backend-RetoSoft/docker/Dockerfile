@@ -25,4 +25,4 @@ COPY . .
 EXPOSE 8000
 
 # Comando por defecto
-CMD ["php-fpm"]
+CMD ["php", "artisan", "migrate", "--force"]
