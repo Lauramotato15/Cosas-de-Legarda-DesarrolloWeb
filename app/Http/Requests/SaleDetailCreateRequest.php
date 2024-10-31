@@ -24,8 +24,8 @@ class SaleDetailCreateRequest extends FormRequest
         return [
             'quantity' => 'required|numeric', 
             "total_value" => 'required|numeric', 
-            "id_product" => 'required|numeric|exists:table,column',
-            "id_sale" => 'required'
+            "id_product" => 'required|numeric|exists:products,id',
+            "id_sale" => 'required|numeric|exi'
         ];
     }
 }
