@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Maquetacion Bootstrap 1</title>
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+            crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="container">
+
+            <button type="button" class="btn btn-secondary"
+                data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Registrar Usuario
+            </button>
+
+            <div class="modal fade" id="exampleModal" data-bs-backdrop="static" data-bs-keyboard= "false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Formulario
+                                de registro</h1>
+                            <button type="button" class="btn-close"
+                                data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <label for="imputnombre" class="formlabel">Nombres</label>
+                                        <input type="Usuario" class="forminput" id="imputnombre">
+                                    </div>
+                                    <div class="col-6">
+                                        <label for="inputapellido" class="formlabel"></label>
+                                        <input type="Apellido" class="formimput" id="inputapellido">
+                                    </div>
+                                    <div class="col-12 ">
+                                        <label for="inputcorreo" class="formlabel">Correo</label>
+                                        <input width="100%" type="Correo" class="forminput" id="inputcorreo"> 
+                                    </div>
+                                    <div class="col-6 mt-3">
+                                        <input type="radio" name="genero" value="femenino">Femenino
+                                    </div>
+                                    <div class="col-6 mt-3">
+                                        <input type="radio" name="genero" value="masculino">Masculino
+                                    </div>
+                                    <div class="col-12 mt-3">
+                                        <select id="inputstatus"
+                                            class="formselect">
+                                            <option selected>Seleccione</option>
+                                            <option>Pereira</option>
+                                            <option>Dos Quebradas</option>
+                                            <option>Marsella</option>
+                                            <option>La virginia</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-12 mt-5">
+                                        <input type="checkbox" class="forminput" name"terms" onclick="enablesending()">
+                                        <label for="terms" class="formlabel">Acepto terminos y condiciones</label>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary"
+                                data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Siguiente</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--menu navegacion-->
+            <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                <div class="container-fluid">
+                  <a class="navbar-brand" href="#">Navbar</a>
+                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                      <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#">Features</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#">Pricing</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link disabled">Disabled</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </nav>
+        </div>
+
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+            crossorigin="anonymous"></script>
+    </body>
+</html>

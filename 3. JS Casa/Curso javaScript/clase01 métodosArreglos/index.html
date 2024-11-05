@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clase 1</title>
+</head>
+<body>
+    
+    <Script>
+        /*arreglo_numero = [];
+        for(let i=0; i<10; i++){
+            let numero = prompt("Ingrese numero");
+            arreglo_numero.push(numero);
+        }
+
+        let arreglo_modificado = arreglo_numero.map(dobleNumero);
+        console.log(arreglo_modificado);
+
+        function dobleNumero(valor){
+            if(valor < 0){
+                valor = valor * -1;
+            }
+            return valor*2;
+        }*/
+
+        let numeros = [];
+        let valor;
+        let numero;
+
+        do{
+            valor = prompt("Ingrese un numero");
+            numero = parseInt(valor);
+            numeros.push(numero);
+
+        }while(numero != 0);
+
+        let nuevo_arreglo = numeros.map(verificar);
+        function verificar(valor){
+            if(valor % 2 == 0){
+                return "Hola";
+            }else{
+                return "Adiós";
+            }
+        };
+        
+        nuevo_arreglo.forEach(imprimir);
+
+        function imprimir(valor){
+            document.write(valor+" ");
+        }
+
+    </Script>
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: ./
+    image: laravel_app
+    container_name: laravel_app
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./app:/var/www
+    depends_on:
+      - db
+    networks:
+      - laravel_network
+
+  db:
+    image: mysql:5.7
+    container_name: mysql_db
+    restart: always
+    environment:
+      MYSQL_DATABASE: laravel
+      MYSQL_USER: lauraMotato
+      MYSQL_PASSWORD: p4$$w0rd
+      MYSQL_ROOT_PASSWORD: ''
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - laravel_network
+
+  nginx:
+    build:
+      context: ./nginx
+    image: nginx_laravel
+    container_name: nginx_server
+    ports:
+      - "80:80"
+    volumes:
+      - ./app:/var/www
+    depends_on:
+      - app
+    networks:
+      - laravel_network
+
+networks:
+  laravel_network:
+
+volumes:
+  db_data:

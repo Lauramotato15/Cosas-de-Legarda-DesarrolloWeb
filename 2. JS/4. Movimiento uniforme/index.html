@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movimiento Uniforme</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <style>
+            .cont{
+                background-color: rgb(255, 255, 255);
+                width: 350px;
+                text-align: center;
+                display: flex;
+                justify-content: center;
+                align-items: start;
+                height: 340px;
+                margin: 0 auto;
+            }
+            #distancia{
+                border: none;
+            }
+            #velocidad{
+                border: none;
+            }
+            #tiempo{
+                border: none;
+            }
+
+            #selectDist, #selectVel, #selectTmp{
+                color: rgb(6, 6, 209);
+                font-family: Verdana, Geneva, Tahoma, sans-serif;
+                border: none;
+            }
+
+            #boton1{
+                border: none;
+            }
+            #errores{
+                font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            }
+            
+        </style>
+</head>
+
+<body>
+    <section class="cont mt-5 shadow-lg bg-body-tertiary rounded">
+        <div class="p-2" id="cont2">
+            <h3 class=" mb-4">Ingrese los datos</h3>
+            <div>
+                <label for="distancia" class="d-block text-start">Distancia</label>
+                <input type="number" id="distancia" class="mb-3">
+                <select name="distanciaS" id="selectDist">
+                    <option value="metro" id="op1">m</option>
+                    <option value="kilometros">km</option>
+                    <option value="centimetros">cm</option>
+                </select>
+            </div>
+            <div>
+                <label for="velocidad" class="d-block text-start">Velocidad</label>
+                <input type="number" id="velocidad" class="mb-3">
+                <select name="Velocidad" id="selectVel">
+                    <option value="metroSeg">m/s</option>
+                    <option value="kmHora">km/h</option>
+                </select>
+            </div>
+            <div>
+                <label for="tiempo" class="d-block text-start">Tiempo</label>
+                <input type="number" id="tiempo" class="mb-4">
+                <select name="tiempoS" id="selectTmp">
+                    <option value="segundo">seg</option>
+                    <option value="minuto">min</option>
+                    <option value="hora">hora</option>
+                </select>
+            </div> 
+
+            <button class="btn btn-outline-danger" id="boton1" onclick="limpiar()">LIMPIAR</button>
+            <button class="btn btn-light" onclick="calcular()">CALCULAR</button>
+            <div id="errores" class="mt-1"></div>
+        </div>
+    </section>
+
+
+    <script>
+
+        function calcular(){
+            const selectDis = document.getElementById("selectDist");   
+            const valorSelectDis = selectDis.value;
+
+            const selectVel = document.getElementById("selectVel");   
+            const valorSelectVel = selectVel.value;
+
+            const selectTemp = document.getElementById("selectTmp");   
+            const valorSelectTemp = selectTemp.value;
+
+            let distanciaTemp = document.getElementById("distancia").value;
+            let velocidadTemp = document.getElementById("velocidad").value;
+            let tiempoTemp = document.getElementById("tiempo").value;
+
+            switch (valorSelectDis) {
+                case "metro":
+                    distanciaTemp = distanciaTemp;
+                    break;
+                case "kilometros":
+                    distanciaTemp = distanciaTemp * 1000;
+                break;
+                case "centimetros":
+                    distanciaTemp = distanciaTemp / 100;
+                break;
+                default:
+                break;
+            }
+
+            switch (valorSelectVel) {
+                case "metroSeg":
+                    velocidadTemp = velocidadTemp;
+                    break;
+                case "kmHora":
+                    velocidadTemp = velocidadTemp / 3.6;
+                break;
+                default:
+                    break;
+            }
+
+            switch (valorSelectTemp) {
+                case "segundo":
+                    tiempoTemp = tiempoTemp;
+                    break;
+                case "minuto":
+                    tiempoTemp = tiempoTemp * 60;
+                break;
+                case "hora":
+                    tiempoTemp = tiempoTemp * 3600;
+                break;
+                default:
+                    break;
+            }
+
+            if (distanciaTemp != "" && velocidadTemp != "" && tiempoTemp == ""){
+               const tiempoTotal = distanciaTemp / velocidadTemp; 
+               document.getElementById("tiempo").value=tiempoTotal;
+
+            }else if(distanciaTemp != "" && tiempoTemp != "" && velocidadTemp == ""){
+                const velocidadTotal = distanciaTemp / tiempoTemp;
+                document.getElementById("velocidad").value=velocidadTotal;
+
+            }else if(velocidadTemp != "" && tiempoTemp != "" && distanciaTemp == ""){
+                const distanciaTotal = velocidadTemp * tiempoTemp;
+                document.getElementById("distancia").value=distanciaTotal;
+
+            }else if(velocidadTemp == "" && tiempoTemp == "" && distanciaTemp == ""){
+                const etqError = document.getElementById("errores");
+                etqError.innerHTML="ERROR CAMPOS VACIOS";
+
+            }
+        } 
+        
+        function limpiar(){
+            document.getElementById("distancia").value="";
+            document.getElementById("velocidad").value="";
+            document.getElementById("tiempo").value="";
+            document.getElementById("errores").innerHTML="";
+        }
+
+    </script>
+</body>
+</html>

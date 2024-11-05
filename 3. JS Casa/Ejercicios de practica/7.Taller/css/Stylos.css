@@ -1,0 +1,28 @@
+body{
+    background-color: rgb(229, 229, 255);
+}
+
+h1{
+    font-size: 50px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-align: center;
+    margin: 40px;
+}
+
+.head{
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+    background-color: rgb(185, 237, 254);
+    margin-bottom: 40px;
+}
+
+#icono{
+    font-size: 50px;
+}
+
+button{
+    background-color: rgb(185, 237, 254);
+    border-radius: 10px;
+    border: solid  rgb(185, 237, 254);
+}

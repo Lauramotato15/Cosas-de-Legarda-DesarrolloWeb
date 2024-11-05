@@ -1,0 +1,38 @@
+#titulo{
+    font-size: 80px;
+    text-align: center;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: rgb(66, 39, 2);
+    padding-bottom: 80px;
+}
+
+#contenedor{
+   background-color: rgb(255, 232, 155);
+}
+
+#tituloPrincipal{
+    font-size: 80px;
+    text-align: center;
+    color: rgb(245, 145, 5);
+}
+
+#parrafoPrincipal2{
+    font-size: 60px;
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin-top: 50px;
+}
+
+#Buscar{
+    margin-right: 10px;
+}
+
+body{
+    background-color: rgb(255, 223, 135);
+}
+
+button{
+    background-color: rgb(255, 167, 99);
+    border: solid  rgb(255, 167, 99);
+    border-radius: 20px;
+}
