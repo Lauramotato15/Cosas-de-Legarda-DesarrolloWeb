@@ -1,10 +1,11 @@
 <?php
-namespace App\AO;
+namespace App\Services;
 
+use App\AO\SaleDetailAo;
 use App\Services\BaseService;
 use App\Services\IBaseService;
 
-class SaleDetail extends BaseService implements IBaseService 
+class SaleDetailService extends BaseService implements IBaseService 
 {
     public function __construct(private SaleDetailAo $saleDetailRepository)
     {

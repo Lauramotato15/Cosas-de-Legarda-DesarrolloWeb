@@ -26,6 +26,7 @@ class UserController extends Controller
 
 
     public function update($id, UserCreateRequest $request){
+        dump($id);
         $userUpdate = $this->serviceUser->update($id, $request->all());
         return new UserResource($userUpdate);
     }

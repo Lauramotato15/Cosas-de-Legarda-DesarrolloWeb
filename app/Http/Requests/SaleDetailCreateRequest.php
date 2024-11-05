@@ -2,10 +2,12 @@
 
 namespace App\Http\Requests;
 
+use App\Traits\HasJsonError;
 use Illuminate\Foundation\Http\FormRequest;
 
 class SaleDetailCreateRequest extends FormRequest
 {
+    use HasJsonError; 
     /**
      * Determine if the user is authorized to make this request.
      */
@@ -25,7 +27,7 @@ class SaleDetailCreateRequest extends FormRequest
             'quantity' => 'required|numeric', 
             "total_value" => 'required|numeric', 
             "id_product" => 'required|numeric|exists:products,id',
-            "id_sale" => 'required|numeric|exi'
+            "id_sale" => 'required|numeric|exists:sales,id'
         ];
     }
 }
